@@ -27,7 +27,7 @@ export default async function ProfilePage() {
           <p className="text-gray-600">{user.email}</p>
         </div>
       ) : (
-        <p className="text-red-500 text-lg">User not logged in</p>
+        <p className="text-red-500 text-lg">User not logged in........</p>
       )}
     </div>
   );
