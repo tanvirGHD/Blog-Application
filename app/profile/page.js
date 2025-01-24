@@ -1,3 +1,6 @@
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+import { redirect } from "next/navigation";
+
 export default async function ProfilePage() {
   try {
     const { isAuthenticated, getUser } = getKindeServerSession();
@@ -24,7 +27,7 @@ export default async function ProfilePage() {
             <p className="text-gray-600">{user.email}</p>
           </div>
         ) : (
-          <p className="text-red-500 text-lg">User data not available</p>
+          <p className="text-red-500 text-lg">User data not available..</p>
         )}
       </div>
     );
