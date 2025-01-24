@@ -33,7 +33,7 @@ export default function DetailsPage({ params }) {
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-screen bg-gray-100">
-        <p className="text-lg text-gray-700 font-medium">Loading...</p>
+        <p className="text-lg  font-medium text-red-300">Loading found..... </p>
       </div>
     );
   }
