@@ -16,13 +16,11 @@ const Navbar = async () => {
         </li>
         
         {/* Show Profile link only if the user is logged in */}
-        {user && (
           <li>
             <Link href="/profile" className="text-lg text-white">
               Profile
             </Link>
           </li>
-        )}
       </ul>
 
       <div>
