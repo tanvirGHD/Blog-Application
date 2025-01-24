@@ -31,23 +31,33 @@ export default function DetailsPage({ params }) {
   }, [id]);
 
   if (loading) {
-    return <div className="p-4 text-center">Loading...</div>;
+    return (
+      <div className="flex items-center justify-center min-h-screen bg-gray-100">
+        <p className="text-lg text-gray-700 font-medium">Loading...</p>
+      </div>
+    );
   }
 
   if (!post) {
-    return <div className="p-4 text-center">Post not found</div>;
+    return (
+      <div className="flex items-center justify-center min-h-screen bg-gray-100">
+        <p className="text-red-500 text-lg font-medium">Post not found</p>
+      </div>
+    );
   }
 
   return (
-    <main className="p-4">
-      <h1 className="text-2xl font-bold mb-4">{post.title}</h1>
-      <p className="text-gray-700">{post.body}</p>
-      <button
-        onClick={() => router.back()}
-        className="mt-4 bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600"
-      >
-        Go Back
-      </button>
+    <main className="flex items-center justify-center mt-24 px-6">
+      <div className="bg-white shadow-lg rounded-lg p-6 max-w-2xl w-full border">
+        <h1 className="text-3xl font-bold text-gray-800 mb-4">{post.title}</h1>
+        <p className="text-gray-700 leading-7">{post.body}</p>
+        <button
+          onClick={() => router.back()}
+          className="mt-6 bg-[#258d6e] text-white px-6 py-2 rounded-md text-sm font-medium hover:bg-[#1f7359] transition duration-300"
+        >
+          Go Back
+        </button>
+      </div>
     </main>
   );
 }
