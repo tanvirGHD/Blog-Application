@@ -24,7 +24,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Kinde Auth App",
+  title: "Blog Application",
   description: "Example of Kinde Auth with Next.js",
 };
 
