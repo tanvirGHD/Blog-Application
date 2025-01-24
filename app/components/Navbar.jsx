@@ -1,12 +1,11 @@
 import Link from "next/link";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 
+const Navbar = async () => {
+  const { getUser } = getKindeServerSession();
+  const user = await getUser();
+  console.log("User Info:", user);
 
-
-const Navbar = async() => {
-    const { getUser } = getKindeServerSession();
-    const user = await getUser();
-    console.log("paice",user)
   return (
     <nav className="flex justify-between items-center bg-[#258d6e] p-6 sticky">
       <ul className="flex gap-4">
@@ -15,11 +14,15 @@ const Navbar = async() => {
             Home
           </Link>
         </li>
-        <li>
-          <Link href="/profile" className="text-lg text-white">
-            Profile
-          </Link>
-        </li>
+        
+        {/* Show Profile link only if the user is logged in */}
+        {user && (
+          <li>
+            <Link href="/profile" className="text-lg text-white">
+              Profile
+            </Link>
+          </li>
+        )}
       </ul>
 
       <div>
@@ -33,7 +36,7 @@ const Navbar = async() => {
         ) : (
           <Link
             href="/api/auth/login"
-            className="bg-[#258d6e] text-white px-4 py-2 rounded-md text-sm hover:bg-[#104132] transition duration-300"
+            className="bg-[#067531] text-white px-4 py-2 rounded-md text-sm hover:bg-[#067531] transition duration-300"
           >
             Login
           </Link>

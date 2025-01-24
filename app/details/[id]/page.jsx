@@ -47,7 +47,7 @@ export default function DetailsPage({ params }) {
   }
 
   return (
-    <main className="flex items-center justify-center mt-24 px-6">
+    <main className="flex items-center justify-center mt-24 px-6 mb-60">
       <div className="bg-white shadow-lg rounded-lg p-6 max-w-2xl w-full border">
         <h1 className="text-3xl font-bold text-gray-800 mb-4">{post.title}</h1>
         <p className="text-gray-700 leading-7">{post.body}</p>

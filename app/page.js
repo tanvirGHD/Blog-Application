@@ -1,4 +1,3 @@
-
 "use client";
 
 import Link from "next/link";
@@ -8,6 +7,7 @@ import { useRouter } from "next/navigation"; // Import useRouter
 export default function Home() {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [visiblePosts, setVisiblePosts] = useState(18); // Initial visible posts count
   const router = useRouter(); // Initialize useRouter
 
   useEffect(() => {
@@ -29,6 +29,10 @@ export default function Home() {
     fetchPosts();
   }, []);
 
+  const handleShowMore = () => {
+    setVisiblePosts((prev) => prev + 18); // Show 18 more posts on click
+  };
+
   if (loading) {
     return <div className="p-4 text-center">Loading...</div>;
   }
@@ -36,11 +40,11 @@ export default function Home() {
   return (
     <main>
       <div className="p-4">
-        <h1 className="text-3xl font-bold text-center">Blog Posts</h1>
+        <h1 className="text-3xl font-bold text-center text-[#1a8565]">Blog Posts</h1>
         <ul className="mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {posts.map((post) => (
+          {posts.slice(0, visiblePosts).map((post) => (
             <li key={post.id} className="mb-2 border p-5">
-                <p className="uppercase">{post.title}</p>
+              <p className="uppercase">{post.title}</p>
               <div className="mt-4">
                 <button
                   onClick={() => router.push(`/details/${post.id}`)} // Navigate programmatically
@@ -52,6 +56,16 @@ export default function Home() {
             </li>
           ))}
         </ul>
+        {visiblePosts < posts.length && (
+          <div className="mt-4 text-center">
+            <button
+              onClick={handleShowMore}
+              className="bg-[#34b68f] text-white px-5 py-2 rounded hover:bg-[#196951]"
+            >
+              See More
+            </button>
+          </div>
+        )}
       </div>
     </main>
   );
