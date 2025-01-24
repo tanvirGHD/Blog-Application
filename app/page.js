@@ -62,7 +62,7 @@ export default function Home() {
               onClick={handleShowMore}
               className="bg-[#34b68f] text-white px-5 py-2 rounded hover:bg-[#196951]"
             >
-              See More
+              See More Blogs
             </button>
           </div>
         )}
